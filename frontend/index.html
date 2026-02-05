@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Emotion Recognition</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-wave-square"></i> Speech Emotion Recognition</h1>
+            <p class="subtitle">Upload or record audio to detect emotions (Angry, Happy, Sad)</p>
+        </header>
+
+        <div class="main-content">
+            <div class="card upload-card">
+                <h2><i class="fas fa-upload"></i> Upload Audio</h2>
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-file-audio upload-icon"></i>
+                    <p>Drag & drop your audio file here</p>
+                    <p class="file-types">Supports: .wav, .mp3, .m4a</p>
+                    <input type="file" id="fileInput" accept=".wav,.mp3,.m4a">
+                    <label for="fileInput" class="btn btn-upload">
+                        <i class="fas fa-folder-open"></i> Browse Files
+                    </label>
+                </div>
+                <div class="file-info" id="fileInfo"></div>
+            </div>
+
+            <div class="card record-card">
+                <h2><i class="fas fa-microphone"></i> Record Audio</h2>
+                <div class="record-controls">
+                    <button id="recordBtn" class="btn btn-record">
+                        <i class="fas fa-microphone"></i> Start Recording
+                    </button>
+                    <button id="stopBtn" class="btn btn-stop" disabled>
+                        <i class="fas fa-stop"></i> Stop Recording
+                    </button>
+                    <button id="playBtn" class="btn btn-play" disabled>
+                        <i class="fas fa-play"></i> Play
+                    </button>
+                </div>
+                <div class="timer">
+                    <span id="timer">00:00</span>
+                </div>
+                <div class="visualizer">
+                    <canvas id="visualizer"></canvas>
+                </div>
+            </div>
+
+            <div class="card results-card">
+                <h2><i class="fas fa-chart-bar"></i> Analysis Results</h2>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing emotion...</p>
+                </div>
+                <div class="results" id="results">
+                    <div class="result-header">
+                        <h3 id="emotionResult">No audio analyzed yet</h3>
+                        <div class="confidence" id="confidenceResult"></div>
+                    </div>
+                    
+                    <div class="emotion-bars">
+                        <div class="emotion-item">
+                            <span class="emotion-label">Angry</span>
+                            <div class="bar-container">
+                                <div class="bar angry-bar" data-percent="0"></div>
+                            </div>
+                            <span class="percent">0%</span>
+                        </div>
+                        <div class="emotion-item">
+                            <span class="emotion-label">Happy</span>
+                            <div class="bar-container">
+                                <div class="bar happy-bar" data-percent="0"></div>
+                            </div>
+                            <span class="percent">0%</span>
+                        </div>
+                        <div class="emotion-item">
+                            <span class="emotion-label">Sad</span>
+                            <div class="bar-container">
+                                <div class="bar sad-bar" data-percent="0"></div>
+                            </div>
+                            <span class="percent">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="audio-player" id="audioPlayer">
+                        <audio controls id="resultAudio"></audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by Deep Learning | CNN-LSTM Model | Real-time Speech Analysis</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
